@@ -8,9 +8,9 @@ accommodationRoutes.get('/', getAccommodations)
 
 accommodationRoutes.get('/id/:id', getAccommodationsById)
 
-accommodationRoutes.post('/', upload.single("foto"), postAccommodations)
+accommodationRoutes.post('/', upload.array("images"), postAccommodations)
 
-accommodationRoutes.put('/:id', upload.single("foto"), putAccommodations)
+accommodationRoutes.put('/:id', upload.array("images"), putAccommodations)
 
 accommodationRoutes.delete('/:id', deleteAccommodations)
 

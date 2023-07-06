@@ -46,6 +46,40 @@ const register = async(req, res) => {
     }
 };
 
+const getUsers = async(req, res) => {
+    try {
+        const allUsers = await User.find();
+        return res.status(200).json(allUsers);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+}
+
+const putUser = async(req, res) => {
+    try {
+        const {id} = req.params;
+        const putUser = new User(req.body);
+        putUser._id = id;
+        console.log(`putuser -------- ${putUser}`);
+        if (req.file) {
+            putUser.image = req.file.path;
+        }
+        const updatedUser = await User.findByIdAndUpdate(id, putUser, {new: true});
+        console.log(`updatedUser 1 -------- ${updatedUser}`);
+        if(!updatedUser){
+            return res.status(404).json({message: 'No tenemos users con ese ID'}); 
+         }
+         if(updatedUser.image !== putUser.image){
+            deleteFile(updatedUser.image);
+        }
+
+        console.log(`updatedUser 2 -------- ${updatedUser}`);
+        return res.status(200).json(updatedUser);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+}
+
 const checkSession = (req, res) => {
     try {
         return res.status(201).json(req.user)
@@ -54,4 +88,4 @@ const checkSession = (req, res) => {
     }
 }
 
-module.exports = {login, register, checkSession}
+module.exports = {login, register, getUsers, putUser, checkSession}

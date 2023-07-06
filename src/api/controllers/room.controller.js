@@ -29,7 +29,7 @@ const postRooms = async(req, res) => {
         console.log(req.file);
         const newRoom = new Room(req.body);
         if (req.file) {
-            newRoom.foto = req.file.path;
+            newRoom.images = req.file.path;
         }
         const createdRoom = await newRoom.save();   
         return res.status(201).json(createdRoom);
@@ -44,14 +44,14 @@ const putRooms = async(req, res) => {
         const putRoom = new Room(req.body);
         putRoom._id = id;
         if (req.file) {
-            putRoom.foto = req.file.path;
+            putRoom.images = req.file.path;
         }
         const updatedRoom = await Room.findByIdAndUpdate(id, putRoom, {new: true});
         if(!updatedRoom){
             return res.status(404).json({message: 'No tenemos rooms con ese ID'}); 
          }
-         if(updatedRoom.foto !== putRoom.foto){
-            deleteFile(updatedRoom.foto);
+         if(updatedRoom.images !== putRoom.images){
+            deleteFile(updatedRoom.images);
         }
         return res.status(200).json(updatedRoom);
     } catch (error) {

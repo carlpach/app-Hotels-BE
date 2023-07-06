@@ -8,9 +8,9 @@ experienceRoutes.get('/', getExperiences)
 
 experienceRoutes.get('/id/:id', getExperiencesById)
 
-experienceRoutes.post('/', upload.single("foto"), postExperiences)
+experienceRoutes.post('/', upload.array("images"), postExperiences)
 
-experienceRoutes.put('/:id', upload.single("foto"), putExperiences)
+experienceRoutes.put('/:id', upload.array("images"), putExperiences)
 
 experienceRoutes.delete('/:id', deleteExperiences)
 

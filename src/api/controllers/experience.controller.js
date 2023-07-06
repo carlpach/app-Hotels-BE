@@ -29,7 +29,7 @@ const postExperiences = async(req, res) => {
         console.log(req.file);
         const newExperience = new Experience(req.body);
         if (req.file) {
-            newExperience.foto = req.file.path;
+            newExperience.images = req.file.path;
         }
         const createdExperience = await newExperience.save();   
         return res.status(201).json(createdExperience);
@@ -44,14 +44,14 @@ const putExperiences = async(req, res) => {
         const putExperience = new Experience(req.body);
         putExperience._id = id;
         if (req.file) {
-            putExperience.foto = req.file.path;
+            putExperience.images = req.file.path;
         }
         const updatedExperience = await Experience.findByIdAndUpdate(id, putExperience, {new: true});
         if(!updatedExperience){
             return res.status(404).json({message: 'No tenemos experiences con ese ID'}); 
          }
-         if(updatedExperience.foto !== putExperience.foto){
-            deleteFile(updatedExperience.foto);
+         if(updatedExperience.images !== putExperience.images){
+            deleteFile(updatedExperience.images);
         }
         return res.status(200).json(updatedExperience);
     } catch (error) {

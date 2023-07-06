@@ -8,9 +8,9 @@ roomRoutes.get('/', getRooms)
 
 roomRoutes.get('/id/:id', getRoomsByID)
 
-roomRoutes.post('/', upload.single("foto"), postRooms)
+roomRoutes.post('/', upload.array("images"), postRooms)
 
-roomRoutes.put('/:id', upload.single("foto"), putRooms)
+roomRoutes.put('/:id', upload.array("images"), putRooms)
 
 roomRoutes.delete('/:id', deleteRooms)
 
