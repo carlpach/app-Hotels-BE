@@ -6,10 +6,10 @@ const Schema = mongoose.Schema;
 const roomSchema = new Schema(
     {
         name: {type: String, required: true},
-        description: {type: [String], required: true},
-        features: {type: [String], required: true},
+        description: {type: String, required: true},
+        features: [{type: String, required: true}],
         price: {type: Number, required: true},
-        images: [{type: [String], required: false}]
+        images: [{type: String, required: false}]
     },{
         timestamps: true
     }

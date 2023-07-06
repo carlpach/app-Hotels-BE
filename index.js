@@ -29,14 +29,13 @@ app.use((req, res, next) => {
   next();
 })
 
-app.use(cors(
-  {
-    origin: "*",  //si sabemos origenes podemos ponerlos en un array
-    // origin: "*", // permito todas las conexiones
-    credentials: true
-  }
-))
-
+app.use(cors({
+  origin: ["http://localhost:3000", "http://localhost:4200", "http://127.0.0.1:5500"],
+  // origin: "*", // permito todas las conexiones
+  methods: ["GET", "POST", "PUT"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 
 app.use(express.json()); 
 app.use(express.urlencoded({extended: false})); 
