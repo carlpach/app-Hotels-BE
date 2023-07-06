@@ -1,4 +1,4 @@
-const User = require("../aplication/models/user.model");
+const User = require("../api/models/user.model");
 const { verifySign } = require("../utils/jwt");
 
 
