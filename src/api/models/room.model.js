@@ -6,9 +6,10 @@ const Schema = mongoose.Schema;
 const roomSchema = new Schema(
     {
         name: {type: String, required: true},
-        description: {type: String, required: true},
-        features: {type: String, required: true, default: "Single", enum: ["Single", "Doble", "Terrace", "Gimnasio", "Cocina", "Mascotas", "Cafetera", "Tetera"]},
+        description: {type: [String], required: true},
+        features: {type: [String], required: true},
         price: {type: Number, required: true},
+        images: {type: [String], required: false}
     },{
         timestamps: true
     }

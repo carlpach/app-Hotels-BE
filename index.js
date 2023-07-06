@@ -4,8 +4,8 @@ dotenv.config();
 const cloudinary = require("cloudinary").v2;
 const cors = require("cors")
 
-//const MoviesRoutes = require('./src/api/routes/movies.routes');
-const roomRoutes = require ("./src/api/routes/room.route")
+
+const roomRoutes = require('./src/api/routes/room.route');
 const experienceRoutes = require('./src/api/routes/experience.route');
 const accommodationRoutes = require('./src/api/routes/accommodation.route');
 const userRouter = require('./src/api/routes/user.route');
