@@ -42,7 +42,7 @@ app.use(express.urlencoded({extended: false}));
 
 app.use('/accommodation', accommodationRoutes);
 app.use('/experience', experienceRoutes);
-app.use('/room' , roomRoutes);
+// app.use('/room' , roomRoutes);
 app.use('/users', userRouter);
 
 
