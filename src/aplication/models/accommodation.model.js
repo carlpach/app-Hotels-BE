@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const accomodationSchema = new Schema(
+const accommodationSchema = new Schema(
     {
         name: {type: String, required: true},
         city: {type: String, required: true},
@@ -19,6 +19,6 @@ const accomodationSchema = new Schema(
 )
 
 
-const accomodation = mongoose.model('Accomodation', accomodationSchema);
+const accommodation = mongoose.model('Accommodation', accommodationSchema);
 
-module.exports = accomodation;
+module.exports = accommodation;

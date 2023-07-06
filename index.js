@@ -4,7 +4,7 @@ dotenv.config();
 const cloudinary = require("cloudinary").v2;
 const cors = require("cors")
 
-const MoviesRoutes = require('./src/api/routes/movies.routes');
+const accommodationRoutes = require('./src/api/routes/accommodation.routes');
 const experienceRoutes = require('./src/aplication/routes/experience.route');
 const userRouter = require('./src/api/routes/user.routes');
 
@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false})); 
 
 
-app.use('/movies', MoviesRoutes);
+app.use('/accommodation', accommodationRoutes);
 app.use('/experience', experienceRoutes);
 app.use('/room' , roomRoutes);
 app.use('/users', userRouter);
