@@ -1,5 +1,5 @@
 const { deleteFile } = require('../../middlewares/delete.file');
-const Experience = require("../models/experience.models")
+const Experience = require("../models/experience.model")
 
 
 const getExperiencesByID = async(req, res) => {

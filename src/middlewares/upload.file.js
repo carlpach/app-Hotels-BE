@@ -7,7 +7,7 @@ const storage = new CloudinaryStorage(
     {
         cloudinary: cloudinary,
         params: {
-            folder: 'libreria',
+            folder: 'Booking',
             allowedFormats: ['jpg', 'png', 'jpeg', 'gif', 'webp', 'pdf']
         }
     }
