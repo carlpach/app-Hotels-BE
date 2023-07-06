@@ -1,4 +1,4 @@
-const User = require("../aplication/models/user.model");
+const User = require("../api/models/user.model");
 
 const validateEmail = (email) => {
     const regex = /^\S+@\S+\.\S+$/;

@@ -7,7 +7,8 @@ const cors = require("cors")
 //const MoviesRoutes = require('./src/api/routes/movies.routes');
 const roomRoutes = require ("./src/aplication/routes/room.route")
 const experienceRoutes = require('./src/aplication/routes/experience.route');
-const userRouter = require('./src/aplication/routes/user.route');
+const accommodationRoutes = require('./src/api/routes/accommodation.route');
+const userRouter = require('./src/api/routes/user.route');
 
 const {connect} = require('./src/utils/db');
 const { isAuth } = require('./src/middlewares/auth');
@@ -41,7 +42,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false})); 
 
 
-app.use('/movies', MoviesRoutes);
+app.use('/accommodation', accommodationRoutes);
 app.use('/experience', experienceRoutes);
 app.use('/rooms' , roomRoutes);
 app.use('/users', userRouter);
