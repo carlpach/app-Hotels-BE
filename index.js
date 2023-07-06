@@ -5,7 +5,7 @@ const cloudinary = require("cloudinary").v2;
 const cors = require("cors")
 
 const accommodationRoutes = require('./src/api/routes/accommodation.routes');
-const experienceRoutes = require('./src/aplication/routes/experience.route');
+const experienceRoutes = require('./src/api/routes/experience.route');
 const userRouter = require('./src/api/routes/user.routes');
 
 const {connect} = require('./src/utils/db');
