@@ -1,8 +1,8 @@
 const { deleteFile } = require('../../middlewares/delete.file');
-const Experience = require("../models/experience.models")
+const Experience = require("../models/experience.model")
 
 
-const getExperiencesByID = async(req, res) => {
+const getExperiencesById = async(req, res) => {
     try {
         const {id} = req.params;
         const experience = await Experience.findById(id);
@@ -72,4 +72,4 @@ const deleteExperiences = async(req, res) => {
     }
 }
 
-module.exports = {getExperiencesByID, getExperiences, postExperiences, putExperiences, deleteExperiences}
+module.exports = {getExperiencesById, getExperiences, postExperiences, putExperiences, deleteExperiences}

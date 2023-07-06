@@ -4,9 +4,9 @@ dotenv.config();
 const cloudinary = require("cloudinary").v2;
 const cors = require("cors")
 
-const accommodationRoutes = require('./src/api/routes/accommodation.routes');
+const accommodationRoutes = require('./src/api/routes/accommodation.route');
 const experienceRoutes = require('./src/api/routes/experience.route');
-const userRouter = require('./src/api/routes/user.routes');
+const userRouter = require('./src/api/routes/user.route');
 
 const {connect} = require('./src/utils/db');
 const { isAuth } = require('./src/middlewares/auth');

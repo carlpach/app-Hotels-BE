@@ -1,6 +1,6 @@
 const express = require('express');
 const upload = require("../../middlewares/upload.file")
-const {getAccommodations, getAccommodationsById, postAccommodations, putAccommodations, deleteExperinces} = require('../controllers/accommodation.controllers');
+const {getAccommodations, getAccommodationsById, postAccommodations, putAccommodations, deleteAccommodations} = require('../controllers/accommodation.controller');
 
 const accommodationRoutes = express.Router();
 
@@ -12,7 +12,7 @@ accommodationRoutes.post('/', upload.single("foto"), postAccommodations)
 
 accommodationRoutes.put('/:id', upload.single("foto"), putAccommodations)
 
-accommodationRoutes.delete('/:id', deleteExperinces)
+accommodationRoutes.delete('/:id', deleteAccommodations)
 
 module.exports= accommodationRoutes;
 

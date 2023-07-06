@@ -1,6 +1,6 @@
 const { generateSign } = require("../../utils/jwt");
 const { validateEmail, validatePassword, usedEmail } = require("../../utils/validators");
-const User = require("../models/user.models");
+const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 
 const login = async(req, res) => {
