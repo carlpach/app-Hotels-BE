@@ -85,7 +85,6 @@ const putRoomInUser = async (req, res) => {
     try {
         const { id } = req.params;
         const userId = req.body._id;
-        console.log(req.body);
         console.log("userid---", userId);
         console.log(req.params);
         const duplicateUser = await User.find({$and: [{_id: userId},{rooms: {$in: [id]}}]});
@@ -93,21 +92,42 @@ const putRoomInUser = async (req, res) => {
             return res.status(405).json({ message: "Room already exists in user." });
         }
         console.log(User);
-        const allUsers = await User.find();
-        console.log("allUsers -------", allUsers);
-        console.log("userId -------", userId);
-        const user = await User.findById(userId);
-        console.log("user -------", user);
         const updatedUser = await User.findByIdAndUpdate(
             userId,
             { $push: { rooms: id } },
             { new: true }
         );
-        console.log("updated user 1 -------", updatedUser);
         if (!updatedUser) {
-            return res.status(404).json({ message: "User no found." });
+            return res.status(404).json({ message: "User not found." });
         }
-        console.log("updated user 2 -------", updatedUser);
+        console.log("updated user -------", updatedUser);
+        return res.status(200).json(updatedUser);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+};
+
+//Método PUT para para anadir 1 experiencia a un usuario
+const putExperienceInUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const userId = req.body._id;
+        console.log("userid---", userId);
+        console.log(req.params);
+        const duplicateUser = await User.find({$and: [{_id: userId},{experiences: {$in: [id]}}]});
+        if(duplicateUser.length > 0) {
+            return res.status(405).json({ message: "experience already exists in user." });
+        }
+        console.log(User);
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            { $push: { experiences: id } },
+            { new: true }
+        );
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found." });
+        }
+        console.log("updated user -------", updatedUser);
         return res.status(200).json(updatedUser);
     } catch (error) {
         return res.status(500).json(error);
@@ -122,4 +142,4 @@ const checkSession = (req, res) => {
     }
 }
 
-module.exports = {login, register, getUsers, putUser, putRoomInUser, checkSession}
+module.exports = {login, register, getUsers, putUser, putRoomInUser, putExperienceInUser, checkSession}
