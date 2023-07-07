@@ -10,6 +10,7 @@ const experienceSchema = new Schema(
         description: {type: String, required: true},
         type: {type: String, required: true, default: "Visita guiada", enum: ["Visita guiada", "Parque de atracciones", "Museo", "Experiencia gastronómica"]},
         location: {lat: {type: Number, required: false},lng: {type: Number, required: false}},
+        mainImage: {type: String, required: true},
         images: [{type: String, required: false}]
     },{
         timestamps: true
