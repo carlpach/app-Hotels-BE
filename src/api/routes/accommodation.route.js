@@ -8,7 +8,7 @@ accommodationRoutes.get('/', getAccommodations)
 
 accommodationRoutes.get('/id/:id', getAccommodationsById)
 
-accommodationRoutes.get('/search/', getAccommodationsBySearch)
+accommodationRoutes.get('/search', getAccommodationsBySearch)
 
 accommodationRoutes.post('/', upload.array("images"), postAccommodations)
 
