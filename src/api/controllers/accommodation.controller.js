@@ -2,6 +2,18 @@ const { deleteFile } = require('../../middlewares/delete.file');
 const Accommodation = require("../models/accommodation.model")
 
 
+
+
+const getAccommodations = async(req, res) => {
+    try {
+        console.log("get all --------");
+        const allAccommodations = await Accommodation.find();
+        return res.status(200).json(allAccommodations);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+}
+
 const getAccommodationsById = async(req, res) => {
     try {
         const {id} = req.params;
@@ -15,10 +27,18 @@ const getAccommodationsById = async(req, res) => {
     }
 }
 
-const getAccommodations = async(req, res) => {
+const getAccommodationsBySearch = async(req, res) => {
     try {
-        const allAccommodations = await Accommodation.find();
-        return res.status(200).json(allAccommodations);
+        console.log("req.query--------", req.query);
+        const city = req.query.city;
+        const start = req.query.checkin;
+        const end = req.query.checkout;
+        const accommodation = await Accommodation.find({$or: [{city: city},{city: city.toLowerCase()}] });
+        console.log(`accommodation in ${city}--------`, accommodation);
+        if(!accommodation){
+           return res.status(404).json({message: 'No tenemos accommodation en esa ciudad'}); 
+        }
+        return res.status(200).json(accommodation);
     } catch (error) {
         return res.status(500).json(error);
     }
@@ -80,4 +100,4 @@ const deleteAccommodations = async(req, res) => {
     }
 }
 
-module.exports = {getAccommodationsById, getAccommodations, postAccommodations, putAccommodations, deleteAccommodations}
+module.exports = {getAccommodationsById, getAccommodations, getAccommodationsBySearch, postAccommodations, putAccommodations, deleteAccommodations}

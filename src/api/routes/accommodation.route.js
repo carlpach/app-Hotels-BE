@@ -1,12 +1,14 @@
 const express = require('express');
 const upload = require("../../middlewares/upload.file")
-const {getAccommodations, getAccommodationsById, postAccommodations, putAccommodations, deleteAccommodations} = require('../controllers/accommodation.controller');
+const {getAccommodations, getAccommodationsById, getAccommodationsBySearch, postAccommodations, putAccommodations, deleteAccommodations} = require('../controllers/accommodation.controller');
 
 const accommodationRoutes = express.Router();
 
 accommodationRoutes.get('/', getAccommodations)
 
 accommodationRoutes.get('/id/:id', getAccommodationsById)
+
+accommodationRoutes.get('/search/', getAccommodationsBySearch)
 
 accommodationRoutes.post('/', upload.array("images"), postAccommodations)
 
