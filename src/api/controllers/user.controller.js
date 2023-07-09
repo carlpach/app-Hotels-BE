@@ -38,6 +38,7 @@ const register = async(req, res) => {
         
         //Encriptar Password
         newUser.password = bcrypt.hashSync(newUser.password, 10);
+        console.log('Datos de registro:', newUser.email, newUser.password);
         const createdUser = await newUser.save();
 
         return res.status(201).json(createdUser)
