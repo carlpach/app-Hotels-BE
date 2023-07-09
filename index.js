@@ -44,7 +44,7 @@ app.use(express.urlencoded({extended: false}));
 app.use('/accommodation', accommodationRoutes);
 app.use('/bookings', bookingRoutes);
 app.use('/rooms', roomRoutes);
-app.use('/users', isAuth, userRouter);
+app.use('/users', userRouter);
 
 // Ruta para manejar rutas no encontradas
 app.use('*', (req, res) => {
