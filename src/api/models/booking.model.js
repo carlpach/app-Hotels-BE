@@ -7,7 +7,7 @@ const bookingSchema = new Schema(
     {
         bookingCode: {type: String, required: true},
         name: {type: String, required: true},
-        surname: {type: String, required: true},
+        lastname: {type: String, required: true},
         dateEntry: {type: String, required: true},
         dateDeparture: {type: String, required: true},
         nights: {type: Number, required: false},
