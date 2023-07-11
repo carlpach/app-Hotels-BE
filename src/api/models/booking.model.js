@@ -10,8 +10,8 @@ const bookingSchema = new Schema(
         lastname: {type: String, required: true},
         dateEntry: {type: String, required: true},
         dateDeparture: {type: String, required: true},
-        nights: {type: Number, required: false},
-        timeCheckin: {type: String, required: false},
+        nights: {type: Number, required: true},
+        price: {type: Number, required: true},
         petitionCustomer: {type: String, required: false},
         room: {type: Schema.Types.ObjectId, ref: "booking", required: true},
     },{
