@@ -51,7 +51,13 @@ const putRooms = async(req, res) => {
         putRoom._id = id;
         if (req.file) {
             putRoom.images = req.file.path;
+        } else if (req.files) {
+            for (let file of req.files) {
+                console.log("file---", file);
+                putRoom.images.push(file.path);
+            }            
         }
+
         const updatedRoom = await Room.findByIdAndUpdate(id, putRoom, {new: true});
         if(!updatedRoom){
             return res.status(404).json({message: 'No tenemos rooms con ese ID'}); 
