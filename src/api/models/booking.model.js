@@ -13,6 +13,7 @@ const bookingSchema = new Schema(
         nights: {type: Number, required: true},
         price: {type: Number, required: true},
         people: {type: Number, required: true},
+        image: {type: String, required: true},
         petitionCustomer: {type: String, required: false},
         room: {type: Schema.Types.ObjectId, ref: "booking", required: true},
     },{

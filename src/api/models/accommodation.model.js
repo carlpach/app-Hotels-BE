@@ -7,6 +7,7 @@ const accommodationSchema = new Schema(
     {
         name: {type: String, required: true},
         city: {type: String, required: true},
+        lowerPrice: {type: Number, required: true},
         type: {type: String, required: true, default: "Hotel", enum: ["Hotel", "Hostal", "Apartamento", "Camping"]},
         level: {type: Number, required: false, default: 0, enum: [0, 2, 3, 4, 5]},
         location: {
