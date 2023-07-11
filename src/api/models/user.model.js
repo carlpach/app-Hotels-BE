@@ -10,8 +10,7 @@ const userSchema = new Schema(
         email: {type: String, required: true},
         password: {type: String, required: true},
         role: {type: String, default: 'user', enum: ['admin', 'user', 'moderator']},
-        rooms: [{type: Schema.Types.ObjectId, ref: "room"}],
-        experiences: [{type: Schema.Types.ObjectId, ref: "experience"}]
+        bookings: [{type: Schema.Types.ObjectId, ref: "booking"}],
     }
 )
 

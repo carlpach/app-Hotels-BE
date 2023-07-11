@@ -6,7 +6,7 @@ const roomRoutes = express.Router();
 
 roomRoutes.get('/', getRooms)
 
-roomRoutes.get('/id/:id', getRoomsByID)
+roomRoutes.get('/:id', getRoomsByID)
 
 roomRoutes.post('/', upload.array("images"), postRooms)
 
