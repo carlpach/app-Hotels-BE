@@ -14,6 +14,7 @@ const bookingSchema = new Schema(
         price: {type: Number, required: true},
         people: {type: Number, required: true},
         image: {type: String, required: true},
+        nameAlojamiento: {type: String, required: true},
         petitionCustomer: {type: String, required: false},
         room: {type: Schema.Types.ObjectId, ref: "booking", required: true},
     },{
