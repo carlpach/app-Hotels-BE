@@ -29,7 +29,13 @@ const postRooms = async(req, res) => {
         console.log(req.file);
         const newRoom = new Room(req.body);
         if (req.file) {
-            newRoom.images = req.file.path;
+            newRoom.images.push(req.file.path);
+        }
+        else if (req.files) {
+            for (let file of req.files) {
+                console.log("file---", file);
+                newRoom.images.push(file.path);
+            }
         }
         const createdRoom = await newRoom.save();   
         return res.status(201).json(createdRoom);

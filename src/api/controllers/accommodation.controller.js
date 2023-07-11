@@ -73,7 +73,13 @@ const putAccommodations = async(req, res) => {
         putAccommodation._id = id;
         if (req.file) {
             putAccommodation.images = req.file.path;
+        } else if (req.files) {
+            for (let file of req.files) {
+                console.log("file---", file);
+                putAccommodation.images.push(file.path);
+            }            
         }
+        
         const updatedAccommodation = await Accommodation.findByIdAndUpdate(id, putAccommodation, {new: true});
         if(!updatedAccommodation){
             return res.status(404).json({message: 'No tenemos accommodations con ese ID'}); 
