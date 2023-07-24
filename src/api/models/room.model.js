@@ -9,7 +9,6 @@ const roomSchema = new Schema(
         description: {type: String, required: true},
         features: [{type: String, required: true}],
         price: {type: Number, required: true},
-        mainImage: {type: String, required: false},
         images: [{type: String, required: false}]
     },{
         timestamps: true
